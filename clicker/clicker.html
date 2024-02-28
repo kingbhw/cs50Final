@@ -1,6 +1,5 @@
 <html>
 <head>
-   <link rel="stylesheet" href="https://github.com/kingbhw/cs50Final/blob/main/clicker/static/style.css">
 <title>Crude Clicker</title>
 <style> 
  span {
@@ -104,13 +103,29 @@ font-size: 24px;
     user-select: none;
 
 }
+body {
+            background-image: url('background.png'); /* Replace with your crude oil-themed background image */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            animation: oilAnimation 10s infinite alternate; /* Add animation */
+        }
+        @keyframes oilAnimation {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+        /* Add more styling for your game elements here */
+    
 
 </style>
 </head>
 
 <body>
-   
-
+<div class="background">
 
 
     <div class="sectionLeft">
@@ -121,7 +136,7 @@ font-size: 24px;
     </div>
     <br>
     <div class="clickerContainer">
-<img src="static/crude.png" height="256px" width="256px" onclick="addToScore(1+miners)"> 
+<img src="images/crude.png" height="256px" width="256px" onclick="addToScore(1+miners)"> 
 </div>  
 </center>
 </div>
@@ -131,7 +146,7 @@ font-size: 24px;
     <table class="shopButton unselecatble" onclick="buyMiner()">
 
         <tr>
-            <td id = "image">    <img src="static/miner.png">         </td>
+            <td id = "image">    <img src="images/miner.png">         </td>
             <td id="nameAndCost">
                 <p>Miner</p>
                 <p><span id="minerCost">5</span> Crude </br> +1 Click </p>
@@ -141,7 +156,7 @@ font-size: 24px;
 <table class="shopButton unselecatble" onclick="buyCursor()">
 
     <tr>
-        <td id = "image">    <img src="static/download.png">         </td>
+        <td id = "image">    <img src="images/download.png">         </td>
         <td id="nameAndCost">
             <p>Cursor</p>
             <p><span id="cursorCost">15</span> Crude +5cps</p>
@@ -151,7 +166,7 @@ font-size: 24px;
     <table class="shopButton unselecatble" onclick="buyPickaxe()">
 
         <tr>
-            <td id = "image">    <img src="static/pickaxe.png">         </td>
+            <td id = "image">    <img src="images/pickaxe.png">         </td>
             <td id="nameAndCost">
                 <p>Pickaxe</p>
                 <p><span id="pickaxeCost">45</span> Crude +15cps</p>
@@ -161,12 +176,21 @@ font-size: 24px;
         <table class="shopButton unselecatble" onclick="buyJackhammer()">
 
             <tr>
-                <td id = "image">    <img src="static/jackhammer.png">         </td>
+                <td id = "image">    <img src="images/jackhammer.png">         </td>
                 <td id="nameAndCost">
                     <p>Jackhammer</p>
                     <p><span id="jackhammerCost">150</span> Crude  +50cps</p>
                 </td>
                 <td id="amount"><span id="jackhammers">0</span></td>
+            </tr>
+            <table class="shopButton unselecatble" onclick="buyExcavator()">
+            <tr>
+                <td id = "image">    <img src="images/Capture.PNG">         </td>
+                <td id="nameAndCost">
+                    <p>Excavator</p>
+                    <p><span id="ExcavatorCost">200</span> Crude  +100cps</p>
+                </td>
+                <td id="amount"><span id="Excavator">0</span></td>
             </tr>
 </table>
 </div>
@@ -182,6 +206,9 @@ var pickaxes = 0;
 var scorePerSecond = 0;
 var jackhammers = 0;
 var jackhammerCost = 150;
+var oilrig = 0;
+var oilrigCost = 200;
+
 
 
 // to make new items just copy paste alr made functions and change variable names as well as add new variables
@@ -258,6 +285,23 @@ function buyJackhammer(){
 
 }
 
+function buyExcavator(){
+    if (score>= excavator){
+            score = score - excavator;
+            oilrig = oilrig + 1;
+            oilrigCost = Math.round(oilrigCost * 1.55);
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("jackhammerCost").innerHTML = oilrigCost;
+            document.getElementById("jackhammers").innerHTML = oilrig;
+            updateScorePerSecond();
+
+
+    }
+
+
+
+
+}
 
 function addToScore(amount){
     score = score + amount;
@@ -301,6 +345,7 @@ setInterval(function(){
     score = score + cursors * 5;
     score = score + pickaxes * 15;
     score = score + jackhammers * 50;
+    score = score + oilrig * 200;
     document.getElementById("score").innerHTML = score
 
     document.title = score + " crude -  Crude Clicker";
