@@ -1,6 +1,4 @@
 /* style.css */
-
-.container {
-    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Apply a 10px blur effect */
-  }
+body {
+  background-color: lightblue;
+}
