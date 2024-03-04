@@ -1,0 +1,15 @@
+body, html {
+    height: 50%;
+    margin: 0;
+    padding: 0;
+    overflow:auto;
+  }
+  
+  canvas {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 500px; /* Adjust the height as needed */
+    background-color: rgb(37, 35, 35); /* Optional: Set a background color for the canvas */
+  }

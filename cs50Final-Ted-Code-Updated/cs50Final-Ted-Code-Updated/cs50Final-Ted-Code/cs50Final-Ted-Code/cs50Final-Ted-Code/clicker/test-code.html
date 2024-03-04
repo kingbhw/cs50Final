@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    canvas {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="400"></canvas>
+
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var x = 200;
+    var y = 50;
+    var dx = 2;
+    var dy = 2;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.beginPath();
+      ctx.moveTo(x, y - 20);
+      ctx.quadraticCurveTo(x + 20, y - 50, x + 20, y);
+      ctx.quadraticCurveTo(x + 20, y + 50, x, y + 20);
+      ctx.quadraticCurveTo(x - 20, y + 20, x - 20, y);
+      ctx.quadraticCurveTo(x - 20, y - 20, x, y - 20);
+      ctx.fillStyle = 'blue';
+      ctx.fill();
+      ctx.closePath();
+
+      x += dx;
+      y += dy;
+
+      if (x + dx > canvas.width - 20 || x + dx < 20) {
+        dx = -dx;
+      }
+      if (y + dy > canvas.height - 20 || y + dy < 20) {
+        dy = -dy;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
