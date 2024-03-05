@@ -1,2 +1,3 @@
 # cs50Final
-cs50 final for 2024
+Project by :
+Benjamin Williams, Teddy Bosch, Karlo Woods, Deacon Lindeman, Aiden Ersoy
