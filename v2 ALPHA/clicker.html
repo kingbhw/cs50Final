@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crude Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="main">
+            <div class="left">
+                <h3>Crude: <span class="crude-cost">0</span></h3>
+                <img src="./static/crude.png" alt="" srcset="" class="crude-image" onclick="incrementCrude()" draggable="false" > 
+            </div>
+            <div class="right">
+                <div class="upgrade" onclick="buyMiner()">
+                    <div class="left-section">
+                        <img src="static/miner.png" alt="" class="upgrade-image">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Miner</h4>
+                        <div class="cost-info">
+                            <p>Cost: <span class="miner-cost">10</span></p>
+                            <img src="static/crude.png" class="crude-img">
+                        </div>
+                    </div>
+                    <div class=" right-section">
+                        level 0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="index.js"></script>
+</body>
+</html>
