@@ -1,2 +1,3 @@
-# cs50Final
-cs50 final for 2024
+# this is still being worked on
+
+working on fixing bottle necks and changing to using an index and style file
